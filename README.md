@@ -18,3 +18,4 @@ Comandi Shell mongoDB
 - db.nomecollection.deleteOne({chiave: "valore"}) -> cancellare un record
 - db.nomecollection.deleteMany({chiave: "valore"}) -> cancellare più record
 
+https://docs.mongodb.com/php-library/current/tutorial/crud/
