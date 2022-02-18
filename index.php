@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="nome" aria-describedby="Username" required>
+                        <input type="text" class="form-control" id="username" aria-describedby="Username" required>
                         <!-- <div id="usernametip" class="form-text">Inserisci Username</div> -->
                     </div>
                     <div class="col-md-6">
@@ -55,14 +55,23 @@
             </div>
         </div>
     </div>
+
 <?php
     require 'vendor/autoload.php';
-    $m = new MongoDB\Client('mongodb://localhost:27017');
-    $db=$m->{'DatabaseDiProva'}->{'Anagrafica'};
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);              //composer require vlucas/phpdotenv
+    $dotenv->load();
+
+    $path = $_ENV['DB_CONNECTION'].$_ENV['DB_HOST'].':'.$_ENV['DB_PORT'];
+    $m = new MongoDB\Client($path);
+    $db=$m->{$_ENV['DB_DATABASE']}->{$_ENV['DB_COLLECTION']};
     $results = $db->find();
-    foreach ($results as $result){
-        printf("%s %s %s<br>", $result['nome'], $result['cognome'],$result['email']);
+    $data=array();    
+        
+    foreach ($results as $result){                
+        array_push($data,$result);
     }
+    file_put_contents("dump.json",json_encode($data));
 ?>
+
 </body>
 </html>
