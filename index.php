@@ -48,11 +48,10 @@
                 </form>
             </div>
             <div class="col-5">
-                <table class="table table-hover table-striped table-sm" id="tabella">
+                <table class="table table-hover table-striped table-sm" id="tabella" style="visibility: hidden">
                     <thead class="table-dark">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">ID</th>
+                            <th scope="col">#</th>                            
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
                             <th scope="col">E-mail</th>
