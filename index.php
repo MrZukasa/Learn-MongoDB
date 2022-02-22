@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
-    <link rel="icon" href="https://img.icons8.com/color/96/000000/mongodb.png" type="image/png">    
+    <link rel="icon" href="./pngwing.png" type="image/png">    
 
 </head>
 <body>

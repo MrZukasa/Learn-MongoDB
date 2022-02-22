@@ -34,12 +34,12 @@ searchBTN.addEventListener('click', () => {
             let row="";
             let table="";            
             collection.forEach((data,i) =>{                
-                row = '<td id="nome">' + data.nome +'</td>';
-                row += '<td id="email">' + data.email +'</td>';
+                row = '<td id="nome">' + data.nome +'</td>';                
                 row += '<td id="cognome">' + data.cognome +'</td>';
+                row += '<td id="email">' + data.email +'</td>';
                 row += '<td id="username">' + data.username +'</td>';
                 row += '<td id="password">' + data.password +'</td>';
-                table += "<tr><th scope ='row'>"+ (i+1) +"</th>"+ row +"</tr>";                              
+                table += "<tr id='riga"+(i+1)+"'><th scope ='row'>"+ (i+1) +"</th>"+ row +"</tr>";                              
             })
             header.style.visibility = 'visible'; 
             tabella.innerHTML =table;
@@ -49,4 +49,11 @@ searchBTN.addEventListener('click', () => {
         responseP.setAttribute('style', 'color:red');
         setTimeout(() => responseP.innerHTML = "",3000)
     });
+});
+
+const riga = document.querySelectorAll("#riga");
+
+riga.addEventListener('click',() =>{
+    let row = this.children("td");
+    console.log(row);
 });
