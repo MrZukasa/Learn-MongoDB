@@ -39,7 +39,7 @@ searchBTN.addEventListener('click', () => {
                 row += '<td id="email">' + data.email +'</td>';
                 row += '<td id="username">' + data.username +'</td>';
                 row += '<td id="password">' + data.password +'</td>';
-                table += "<tr id='riga"+(i+1)+"'><th scope ='row'>"+ (i+1) +"</th>"+ row +"</tr>";                              
+                table += "<tr id='riga"+(i+1)+"'><th scope ='row'>"+ (i+1) +"</th>"+ row +"</tr>";
             })
             header.style.visibility = 'visible'; 
             tabella.innerHTML =table;
@@ -49,11 +49,9 @@ searchBTN.addEventListener('click', () => {
         responseP.setAttribute('style', 'color:red');
         setTimeout(() => responseP.innerHTML = "",3000)
     });
+
+    const table = document.querySelector("#tabella");
+    console.log(table.rows[2].getElementsByTagName("td"));
+
 });
 
-const riga = document.querySelectorAll("#riga");
-
-riga.addEventListener('click',() =>{
-    let row = this.children("td");
-    console.log(row);
-});
