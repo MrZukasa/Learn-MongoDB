@@ -48,7 +48,7 @@
                 </form>
             </div>
             <div class="col-5">
-                <table class="table table-hover table-striped table-sm" id="tabella" style="visibility: hidden">
+                <table class="table table-hover table-striped table-sm" id="tabella" style="visibility: hidden; cursor: pointer;">
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">#</th>                            

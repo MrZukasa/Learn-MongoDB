@@ -3,6 +3,7 @@ const searchBTN = document.querySelector("#search");
 const responseP = document.querySelector("#response");
 const tabella = document.querySelector("#tabella").getElementsByTagName("tbody")[0];
 const header = document.querySelector("#tabella");
+const t = document.querySelectorAll("#tabella");
 
 searchBTN.addEventListener('click', () => {
     let nome = document.querySelector('#nome');
@@ -50,8 +51,19 @@ searchBTN.addEventListener('click', () => {
         setTimeout(() => responseP.innerHTML = "",3000)
     });
 
-    const table = document.querySelector("#tabella");
-    console.log(table.rows[2].getElementsByTagName("td"));
+    // const table = document.querySelector("#tabella");
+    // let rows = table.rows;
+    // console.log(rows[1].getElementsByTagName("td").nome);
 
 });
 
+t.forEach(function(row) {    
+    row.addEventListener("click", (row) =>{
+        let rowData = row.path[1].cells;
+        document.querySelector("#nome").value = rowData["nome"].innerHTML;
+        document.querySelector("#cognome").value = rowData["cognome"].innerHTML;
+        document.querySelector("#email").value = rowData["email"].innerHTML;
+        document.querySelector("#username").value = rowData["username"].innerHTML;
+        document.querySelector("#password").value = rowData["password"].innerHTML;
+    })
+});
