@@ -4,13 +4,14 @@ const responseP = document.querySelector("#response");
 const tabella = document.querySelector("#tabella").getElementsByTagName("tbody")[0];
 const header = document.querySelector("#tabella");
 const t = document.querySelectorAll("#tabella");
+const nome = document.querySelector('#nome');
+const cognome = document.querySelector('#cognome');
+const email = document.querySelector('#email');
+const username = document.querySelector('#username');
+const password = document.querySelector('#password');
 
 searchBTN.addEventListener('click', () => {
-    let nome = document.querySelector('#nome');
-    let cognome = document.querySelector('#cognome');
-    let email = document.querySelector('#email');
-    let username = document.querySelector('#username');
-    let password = document.querySelector('#password');
+    
     let url = "view.php";
 
     fetch(url,{        
@@ -50,20 +51,20 @@ searchBTN.addEventListener('click', () => {
         responseP.setAttribute('style', 'color:red');
         setTimeout(() => responseP.innerHTML = "",3000)
     });
-
-    // const table = document.querySelector("#tabella");
-    // let rows = table.rows;
-    // console.log(rows[1].getElementsByTagName("td").nome);
-
 });
 
 t.forEach(function(row) {    
     row.addEventListener("click", (row) =>{
         let rowData = row.path[1].cells;
-        document.querySelector("#nome").value = rowData["nome"].innerHTML;
-        document.querySelector("#cognome").value = rowData["cognome"].innerHTML;
-        document.querySelector("#email").value = rowData["email"].innerHTML;
-        document.querySelector("#username").value = rowData["username"].innerHTML;
-        document.querySelector("#password").value = rowData["password"].innerHTML;
+
+        nome.value = rowData["nome"].innerHTML;
+        cognome.value = rowData["cognome"].innerHTML;
+        email.value = rowData["email"].innerHTML;
+        username.value = rowData["username"].innerHTML;
+        password.value = rowData["password"].innerHTML;
+        
+        responseP.innerHTML = "Record caricato con successo!";
+        responseP.setAttribute('style', 'color:green');
+        setTimeout(() => responseP.innerHTML = "",3000)
     })
 });
