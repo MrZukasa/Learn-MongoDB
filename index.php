@@ -6,23 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
     <link rel="icon" href="./pngwing.png" type="image/png">    
-
+    <style>
+    body {
+        background-image: url('./win95.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+    label {
+        color: rgb(204,212,219);
+    }
+    </style>
 </head>
 <body>
     <div class="container-fluid offset-1 mt-4">
         <div class="row">
             <div class="col-4">
-                <form class="row g-3 needs-validation" novalidate>             
+                <form class="row g-3 need-validation" id="tovalidate" novalidate>
                     <div class="col-4">
                         <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" aria-describedby="Nome" placeholder="Inserisci Nome" required>
-                        <div class="invalid-feedback">
-                            Please choose a username.
-                        </div>
+                        <input type="text" class="form-control" id="nome" aria-describedby="Nome" placeholder="Inserisci Nome" required>                        
                     </div>
                     <div class="col-4">
                         <label for="cognome" class="form-label">Cognome</label>
-                        <input type="text" class="form-control" id="cognome" aria-describedby="Cognome" placeholder="Inserisci Cognome" required>
+                        <input type="text" class="form-control" id="cognome" aria-describedby="Cognome" placeholder="Inserisci Cognome" required>                        
                     </div>
                     <div class="col-4">
                         <label for="email" class="form-label">E-mail</label>
@@ -37,10 +44,11 @@
                         <input type="password" class="form-control" id="password" required>
                     </div>
                     <div class="col">
-                        <button class="btn btn-sm btn-outline-primary" id="search" type="button">Search</button>
-                        <button class="btn btn-sm btn-outline-success" id="add" type="button">Add</button>
-                        <button class="btn btn-sm btn-outline-success" id="update" type="button">Update</button>
-                        <button class="btn btn-sm btn-outline-danger" id="remove" type="button">Remove</button>
+                        <button class="btn btn-sm btn-outline-dark" id="search" type="button">Search</button>
+                        <button class="btn btn-sm btn-outline-dark" id="clear" type="button">Clear</button>
+                        <button class="btn btn-sm btn-outline-dark" id="add" type="button">Add</button>
+                        <button class="btn btn-sm btn-outline-dark" id="update" type="button">Update</button>
+                        <button class="btn btn-sm btn-outline-dark" id="remove" type="button">Remove</button>                        
                         <br>
                         <br>
                         <p id=response></p>
@@ -59,7 +67,7 @@
                             <th scope="col">Password</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-primary table-bordered border-secondary">
 
                     </tbody>
                 </table>

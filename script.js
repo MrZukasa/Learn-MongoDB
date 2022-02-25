@@ -1,5 +1,7 @@
 
 const searchBTN = document.querySelector("#search");
+const clearBTN = document.querySelector("#clear");
+const addBTN = document.querySelector("#add");
 const responseP = document.querySelector("#response");
 const tabella = document.querySelector("#tabella").getElementsByTagName("tbody")[0];
 const header = document.querySelector("#tabella");
@@ -9,12 +11,21 @@ const cognome = document.querySelector('#cognome');
 const email = document.querySelector('#email');
 const username = document.querySelector('#username');
 const password = document.querySelector('#password');
+const form = document.querySelector("#tovalidate");
+let url = ""
 
-searchBTN.addEventListener('click', () => {
-    
-    let url = "view.php";
+clearBTN.addEventListener('click',() => {
+    nome.value = "";
+    cognome.value = "";
+    username.value = "";
+    email.value = "";
+    password.value = "";
+});
 
-    fetch(url,{        
+engine = (url) => {
+    return () => {        
+    let infoMsg ="";
+    fetch(url,{
         method : "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -27,16 +38,24 @@ searchBTN.addEventListener('click', () => {
             passwordPHP: password.value
         })
     }).then(() =>{        
-        responseP.innerHTML = "Ricerca eseguita con successo!";
-        responseP.setAttribute('style', 'color:green');
-        setTimeout(() => responseP.innerHTML = "",3000)
+        switch(url){
+            case "view.php":
+                infoMsg = "Ricerca eseguita con successo!";
+                break;
+            case "insert.php":
+                infoMsg = "Inserimento eseguito con successo!";
+                break;
+        }
+        responseP.innerHTML = infoMsg;
+        responseP.setAttribute('style', 'color:blue');
+        setTimeout(() => responseP.innerHTML = "",3000);
         fetch("dump.json")
         .then(response => response.json())
         .then(collection => {
             let row="";
-            let table="";            
-            collection.forEach((data,i) =>{                
-                row = '<td id="nome">' + data.nome +'</td>';                
+            let table="";
+            collection.forEach((data,i) =>{
+                row = '<td id="nome">' + data.nome +'</td>';
                 row += '<td id="cognome">' + data.cognome +'</td>';
                 row += '<td id="email">' + data.email +'</td>';
                 row += '<td id="username">' + data.username +'</td>';
@@ -46,12 +65,32 @@ searchBTN.addEventListener('click', () => {
             header.style.visibility = 'visible'; 
             tabella.innerHTML =table;
         });
-    }).catch(error =>{
-        responseP.innerHTML = "Ricerca fallita! " + error.message;
-        responseP.setAttribute('style', 'color:red');
+    }).catch(error =>{        
+        switch(url){
+            case "view.php":
+                infoMsg = "Ricerca fallita! ";
+                break;
+            case "insert.php":
+                infoMsg = "Inserimento fallito! ";
+                break;
+        }
+        responseP.innerHTML = infoMsg + error.message;
+        responseP.setAttribute('style', 'color:yellow');
         setTimeout(() => responseP.innerHTML = "",3000)
     });
-});
+}};
+
+validate = () => {    
+    return () => {
+        if ((nome.value != "")&&(cognome.value != "")&&(username.value != "")&&(password.value != "")&&(email.value != "")){
+            form.classList.add('was-validated');            
+        }
+    }
+};
+
+addBTN.addEventListener('click', engine("insert.php"));
+
+searchBTN.addEventListener('click', engine("view.php"));
 
 t.forEach(function(row) {    
     row.addEventListener("click", (row) =>{
@@ -64,7 +103,7 @@ t.forEach(function(row) {
         password.value = rowData["password"].innerHTML;
         
         responseP.innerHTML = "Record caricato con successo!";
-        responseP.setAttribute('style', 'color:green');
-        setTimeout(() => responseP.innerHTML = "",3000)
+        responseP.setAttribute('style', 'color:blue');
+        setTimeout(() => responseP.innerHTML = "",3000);
     })
 });
