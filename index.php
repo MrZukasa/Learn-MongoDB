@@ -19,9 +19,9 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid offset-1 mt-4">
-        <div class="row">
-            <div class="col-4">
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+            <div class="col-5">
                 <form class="row g-3 need-validation" id="tovalidate" novalidate>
                     <div class="col-4">
                         <label for="nome" class="form-label">Nome</label>

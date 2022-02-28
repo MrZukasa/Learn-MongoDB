@@ -12,7 +12,8 @@ const email = document.querySelector('#email');
 const username = document.querySelector('#username');
 const password = document.querySelector('#password');
 const form = document.querySelector("#tovalidate");
-let url = ""
+let url = "";
+let infoMsg ="";
 
 clearBTN.addEventListener('click',() => {
     nome.value = "";
@@ -22,9 +23,10 @@ clearBTN.addEventListener('click',() => {
     password.value = "";
 });
 
-engine = (url) => {
-    return () => {        
-    let infoMsg ="";
+function engine (url) {
+    if (validate(url)==false){
+        return;
+    }
     fetch(url,{
         method : "POST",
         headers: {
@@ -38,17 +40,6 @@ engine = (url) => {
             passwordPHP: password.value
         })
     }).then(() =>{        
-        switch(url){
-            case "view.php":
-                infoMsg = "Ricerca eseguita con successo!";
-                break;
-            case "insert.php":
-                infoMsg = "Inserimento eseguito con successo!";
-                break;
-        }
-        responseP.innerHTML = infoMsg;
-        responseP.setAttribute('style', 'color:blue');
-        setTimeout(() => responseP.innerHTML = "",3000);
         fetch("dump.json")
         .then(response => response.json())
         .then(collection => {
@@ -78,19 +69,42 @@ engine = (url) => {
         responseP.setAttribute('style', 'color:yellow');
         setTimeout(() => responseP.innerHTML = "",3000)
     });
-}};
-
-validate = () => {    
-    return () => {
-        if ((nome.value != "")&&(cognome.value != "")&&(username.value != "")&&(password.value != "")&&(email.value != "")){
-            form.classList.add('was-validated');            
-        }
-    }
+    return;
 };
 
-addBTN.addEventListener('click', engine("insert.php"));
+function validate(url) {
+    switch(url){
+        case "view.php":
+            infoMsg = "Ricerca eseguita con successo!";
+            responseP.innerHTML = infoMsg;
+            responseP.setAttribute('style', 'color:blue');
+            form.classList.remove('was-validated');
+            setTimeout(() => responseP.innerHTML = "",3000);
+            return true;
+            break;
+        case "insert.php":
+            if ((nome.value != "")&&(cognome.value != "")&&(username.value != "")&&(password.value != "")&&(email.value != "")){                
+                infoMsg = "Inserimento eseguito con successo!";
+                responseP.innerHTML = infoMsg;
+                responseP.setAttribute('style', 'color:blue');
+                setTimeout(() => responseP.innerHTML = "",3000);
+                return true;
+            } else {
+                infoMsg = "Per l'inserimento sono necessari tutti i campi.";
+                form.classList.add('was-validated');
+                responseP.innerHTML = infoMsg;
+                responseP.setAttribute('style', 'color:yellow');
+                setTimeout(() => responseP.innerHTML = "",3000);
+                return false;
+            }            
+            break;
+    }
+    return validate;
+};
 
-searchBTN.addEventListener('click', engine("view.php"));
+addBTN.addEventListener('click', function() {engine("insert.php")});
+
+searchBTN.addEventListener('click', function() {engine("view.php")});
 
 t.forEach(function(row) {    
     row.addEventListener("click", (row) =>{
