@@ -9,7 +9,7 @@
     $cognome=$data['cognomePHP'];
     $email=$data['emailPHP'];
     $username=$data['usernamePHP'];
-    $password=$data['passwordPHP'];
+    $password=$data['passwordPHP'];    
 
     $path = $_ENV['DB_CONNECTION'].$_ENV['DB_HOST'].':'.$_ENV['DB_PORT'];           //path per la connessione al link dove è hostato il DB
     $m = new MongoDB\Client($path);                                                 //composer require mongodb/mongodb
@@ -26,5 +26,5 @@
     foreach ($results as $result){                                                  //scorro i dati e li inserisco in un array
         array_push($json,$result);
     }
-    file_put_contents("dump.json",json_encode($json));                              //encodo i dati dentro un JSON
+    file_put_contents("dump.json",json_encode($json));                              //encodo i dati dentro un JSON    
 ?>

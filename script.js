@@ -39,24 +39,30 @@ function engine (url) {
             usernamePHP: username.value,
             passwordPHP: password.value
         })
-    }).then(() =>{        
+    }).then(() =>{    
         fetch("dump.json")
         .then(response => response.json())
         .then(collection => {
             let row="";
             let table="";
-            collection.forEach((data,i) =>{
-                row = '<td id="nome">' + data.nome +'</td>';
-                row += '<td id="cognome">' + data.cognome +'</td>';
-                row += '<td id="email">' + data.email +'</td>';
-                row += '<td id="username">' + data.username +'</td>';
-                row += '<td id="password">' + data.password +'</td>';
-                table += "<tr id='riga"+(i+1)+"'><th scope ='row'>"+ (i+1) +"</th>"+ row +"</tr>";
-            })
-            header.style.visibility = 'visible'; 
-            tabella.innerHTML =table;
-        });
-    }).catch(error =>{        
+            if (collection.hasOwnProperty('Error')==false){
+                collection.forEach((data,i) =>{
+                    row = '<td id="nome">' + data.nome +'</td>';
+                    row += '<td id="cognome">' + data.cognome +'</td>';
+                    row += '<td id="email">' + data.email +'</td>';
+                    row += '<td id="username">' + data.username +'</td>';
+                    row += '<td id="password">' + data.password +'</td>';
+                    table += "<tr id='riga"+(i+1)+"'><th scope ='row'>"+ (i+1) +"</th>"+ row +"</tr>";
+                })
+                header.style.visibility = 'visible'; 
+                tabella.innerHTML =table;
+            } else {
+                responseP.innerHTML = collection.Error;
+                responseP.setAttribute('style', 'color:yellow');
+                setTimeout(() => responseP.innerHTML = "",3000);
+            }                        
+        })
+    }).catch(error =>{    
         switch(url){
             case "view.php":
                 infoMsg = "Ricerca fallita! ";
@@ -67,7 +73,7 @@ function engine (url) {
         }
         responseP.innerHTML = infoMsg + error.message;
         responseP.setAttribute('style', 'color:yellow');
-        setTimeout(() => responseP.innerHTML = "",3000)
+        setTimeout(() => responseP.innerHTML = "",3000);
     });
     return;
 };
