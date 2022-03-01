@@ -6,19 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
     <link rel="icon" href="./pngwing.png" type="image/png">    
-    <style>
-    body {
-        background-image: url('./win95.png');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
-    }
+    <style>    
     label {
         color: rgb(204,212,219);
     }
     </style>
 </head>
-<body>
+<body style="background-color: #707070;">
     <div class="container-fluid mt-4">
         <div class="row justify-content-center">
             <div class="col-5">
