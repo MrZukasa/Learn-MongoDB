@@ -9,22 +9,24 @@
     $cognome=$data['cognomePHP'];
     $email=$data['emailPHP'];
     $username=$data['usernamePHP'];
-    $password=$data['passwordPHP'];    
+    $password=$data['passwordPHP'];
+    $json=array();
 
     $path = $_ENV['DB_CONNECTION'].$_ENV['DB_HOST'].':'.$_ENV['DB_PORT'];           //path per la connessione al link dove è hostato il DB
     $m = new MongoDB\Client($path);                                                 //composer require mongodb/mongodb
     $db=$m->{$_ENV['DB_DATABASE']}->{$_ENV['DB_COLLECTION']};                       //accedo al database e poi alla collection
 
-    $results = $GLOBALS['db']->find([                                               //query relativa alla SELECT*
-        'nome'=> new MongoDB\BSON\Regex('(?i)'.$nome),
-        'cognome'=> new MongoDB\BSON\Regex('(?i)'.$cognome),
-        'username'=> new MongoDB\BSON\Regex('(?i)'.$username),
-        'email'=> new MongoDB\BSON\Regex('(?i)'.$email),
-        'password'=> new MongoDB\BSON\Regex('(?i)'.$password)
-    ]);
-    $json=array();                                                                  //dichiaro un array    
-    foreach ($results as $result){                                                  //scorro i dati e li inserisco in un array
-        array_push($json,$result);
-    }
-    file_put_contents("dump.json",json_encode($json));                              //encodo i dati dentro un JSON    
+    if (empty($nome)||empty($cognome)||empty($username)||empty($password)||empty($email)){
+        $error = array("Error"=>array("Selezionare un record da eliminare"));
+        file_put_contents("dump.json",json_encode($error));        
+    } else {        
+        $results = $GLOBALS['db']->deleteOne([
+            'email'=> $email
+        ]);
+        $results = $GLOBALS['db']->find();                                                                      
+        foreach ($results as $result){                                               //scorro i dati e li inserisco in un array
+            array_push($json,$result);
+        }
+        file_put_contents("dump.json",json_encode($json));
+    };    
 ?>
