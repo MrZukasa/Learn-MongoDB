@@ -5,14 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
-    <link rel="icon" href="./pngwing.png" type="image/png">    
-    <style>    
-    label {
-        color: rgb(204,212,219);
-    }
+    <link rel="icon" href="./pngwing.png" type="image/png">
+    <style>                    
+        label{
+            color: #bdbdbd;
+        }
+        body{
+            background-color: #4d4d4d !important;
+        }
     </style>
 </head>
-<body style="background-color: #707070;">
+<body>
     <div class="container-fluid mt-4">
         <div class="row justify-content-center">
             <div class="col-5">
@@ -38,11 +41,11 @@
                         <input type="password" class="form-control" id="password" required>
                     </div>
                     <div class="col">
-                        <button class="btn btn-sm btn-outline-dark" id="search" type="button">Search</button>
-                        <button class="btn btn-sm btn-outline-dark" id="clear" type="button">Clear</button>
-                        <button class="btn btn-sm btn-outline-dark" id="add" type="button">Add</button>
-                        <button class="btn btn-sm btn-outline-dark" id="update" type="button">Update</button>
-                        <button class="btn btn-sm btn-outline-dark" id="remove" type="button">Remove</button>                        
+                        <button class="btn btn-sm btn-outline-light" id="search" type="button">Cerca</button>
+                        <button class="btn btn-sm btn-outline-light" id="clear" type="button">Svuota</button>
+                        <button class="btn btn-sm btn-outline-light" id="add" type="button">Aggiungi</button>
+                        <button class="btn btn-sm btn-outline-light" id="update" type="button">Modifica</button>
+                        <button class="btn btn-sm btn-outline-light" id="remove" type="button">Elimina</button>
                         <br>
                         <br>
                         <p id=response></p>
@@ -61,7 +64,7 @@
                             <th scope="col">Password</th>
                         </tr>
                     </thead>
-                    <tbody class="table-primary table-bordered border-secondary">
+                    <tbody class="table-secondary table-bordered border-secondary">
 
                     </tbody>
                 </table>

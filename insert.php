@@ -16,26 +16,32 @@
     $m = new MongoDB\Client($path);                                                 //composer require mongodb/mongodb
     $db=$m->{$_ENV['DB_DATABASE']}->{$_ENV['DB_COLLECTION']};                       //accedo al database e poi alla collection
 
-    $results = $GLOBALS['db']->find(['email'=> new MongoDB\BSON\Regex('(?i)'.$email)]);
-    foreach ($results as $result){                                                  //scorro i dati e li inserisco in un array
-        array_push($json,$result);
-    }    
-
-    if ($json[0]['email']==$email){
-        $error = array("Error"=>array("Email già esistente"));
-        file_put_contents("dump.json",json_encode($error));        
+    if (empty($nome)||empty($cognome)||empty($username)||empty($password)||empty($email)){
+        $error = array("Error"=>array("Per l'inserimento sono necessari tutti i campi."));
+        file_put_contents("dump.json",json_encode($error));
+        var_dump($error);
     } else {
-        $results = $GLOBALS['db']->insertOne([                                               
-            'nome'=> $nome,
-            'cognome'=> $cognome,
-            'username'=> $username,
-            'email'=> $email,
-            'password'=> $password
-        ]);
-        $results = $GLOBALS['db']->find();                                                                      
+        $results = $GLOBALS['db']->find(['email'=> new MongoDB\BSON\Regex('(?i)'.$email)]);
         foreach ($results as $result){                                                  //scorro i dati e li inserisco in un array
             array_push($json,$result);
         }
-        file_put_contents("dump.json",json_encode($json));        
+
+        if ($json[0]['email']==$email){
+            $error = array("Error"=>array("Email già esistente."));
+            file_put_contents("dump.json",json_encode($error));
+        } else {
+            $results = $GLOBALS['db']->insertOne([                                               
+                'nome'=> $nome,
+                'cognome'=> $cognome,
+                'username'=> $username,
+                'email'=> $email,
+                'password'=> $password
+            ]);
+            $results = $GLOBALS['db']->find();                                                                      
+            foreach ($results as $result){                                                  //scorro i dati e li inserisco in un array
+                array_push($json,$result);
+            }
+            file_put_contents("dump.json",json_encode($json));        
+        };
     };
 ?>
