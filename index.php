@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Slava Ukraine</title>
     <link rel="icon" href="./pngwing.png" type="image/png">
     <style>                    
         label{
@@ -16,8 +16,8 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid mt-4">
-        <div class="row justify-content-center">
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-center m-0" style="height: 100vh;">
             <div class="col-5">
                 <form class="row g-3 need-validation" id="tovalidate" novalidate>
                     <div class="col-4">
@@ -38,7 +38,12 @@
                     </div>
                     <div class="col-6">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" required>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" id="password" name="password" aria-describedby="Password" placeholder="Inserisci Password" required>
+                            <span class="input-group-text" style="cursor: pointer" id="eye">
+                                <i class="far fa-eye" id="toggleEye"></i>
+                            </span>
+                        </div>
                     </div>
                     <div class="col">
                         <button class="btn btn-sm btn-outline-light" id="search" type="button">Cerca</button>
@@ -65,7 +70,7 @@
                         </tr>
                     </thead>
                     <tbody class="table-secondary table-bordered border-secondary">
-
+                        <!-- sezione generata dal frontend -->
                     </tbody>
                 </table>
             </div>
@@ -73,7 +78,8 @@
     </div>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

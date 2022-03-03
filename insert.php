@@ -9,7 +9,7 @@
     $cognome=$data['cognomePHP'];
     $email=$data['emailPHP'];
     $username=$data['usernamePHP'];
-    $password=$data['passwordPHP'];
+    $password=md5($data['passwordPHP']);
     $json=array();
 
     $path = $_ENV['DB_CONNECTION'].$_ENV['DB_HOST'].':'.$_ENV['DB_PORT'];           //path per la connessione al link dove è hostato il DB

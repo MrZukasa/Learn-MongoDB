@@ -1,10 +1,10 @@
 <?php
-    header('Content-Type: application/json');
-    require 'vendor/autoload.php';                                  //Installing the PHP Library with Composer
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);              //composer require vlucas/phpdotenv
-    $dotenv->load();
+    header('Content-Type: application/json');                                       //informo il browser che il flusso dati sara di tipo JSON
+    require 'vendor/autoload.php';                                                  //Installing the PHP Library with Composer
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);                              //composer require vlucas/phpdotenv
+    $dotenv->load();                                                                //carico le informazioni dal file .ENV
     
-    $data = json_decode(file_get_contents("php://input"), true);    
+    $data = json_decode(file_get_contents("php://input"), true);                    //raccolgo i dati inviati dal frontend come stringa e li encodo come JSON
     $nome=$data['nomePHP'];
     $cognome=$data['cognomePHP'];
     $email=$data['emailPHP'];
