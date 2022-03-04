@@ -52,7 +52,7 @@
                         <button class="btn btn-sm btn-outline-light" id="update" type="button">Modifica</button>
                         <button class="btn btn-sm btn-outline-light" id="remove" type="button">Elimina</button>
                         <br>
-                        <br>
+                        <br>                    
                         <p id=response></p>
                     </div>
                 </form>

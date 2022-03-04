@@ -6,6 +6,7 @@ const deleteBTN = document.querySelector("#remove");
 const clearBTN = document.querySelector("#clear");
 const addBTN = document.querySelector("#add");
 const responseP = document.querySelector("#response");
+const alertbox = document.querySelector("#alertbox");
 const tabella = document.querySelector("#tabella").getElementsByTagName("tbody")[0];
 const header = document.querySelector("#tabella");
 const t = document.querySelectorAll("#tabella");
@@ -97,8 +98,8 @@ function engine (url) {
                         break;
                 };
                 responseP.innerHTML = infoMsg;
-                responseP.setAttribute('style', 'color:Chartreuse');
-                setTimeout(() => responseP.innerHTML = "",time);        //formatto il messaggio con colore e timeout
+                responseP.setAttribute('style', 'color:Chartreuse');                
+                setTimeout(() => responseP.innerHTML = "",time);        //formatto il messaggio con colore e timeout                       
             } else {                                                    //in caso di errore
                 responseP.innerHTML = collection.Error;                 //leggo la proprietà Error e la rimando a video
                 form.classList.add('was-validated');                    //mando in errore i campi a video
