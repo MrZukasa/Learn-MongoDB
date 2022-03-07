@@ -52,5 +52,8 @@ then we need to connect to the server via Compass
 create the database and the collection: as you can see i've made the database with the name of "DatabaseDiProva" and the collection named "Anagrafica"
 ![DatabaseIMG](https://i.ibb.co/qC9jTM5/database.png)
 
-you can name the database and the collection as you prefere, the only thing that you need to do if you don't wanna use the same name of mine is to remember to insert those data in the .ENV file
+you can name the database and the collection as you prefer, the only thing that you need to do if you don't wanna use the same name of mine is to remember to insert those data in the .ENV file
 ![ENVIMG](https://i.ibb.co/gJRV6jv/env.png)
+
+then you can access to the app via browser at localhost address
+![appIMG](https://i.ibb.co/tsrSM5S/app.png)
