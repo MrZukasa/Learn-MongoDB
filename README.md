@@ -1,4 +1,4 @@
-Learn MongoDB
+# Learn MongoDB
 
 Comandi Shell mongoDB
 - show dbs -> mostra tutti i db ed il peso, mostra solo db con dati all'interno
@@ -19,7 +19,34 @@ Comandi Shell mongoDB
 - db.nomecollection.deleteMany({chiave: "valore"}) -> cancellare più record
 
 
-## Links Utili
+## Usefull Links
 - https://docs.mongodb.com/php-library/current/tutorial/crud/
 - https://packagist.org/packages/vlucas/phpdotenv
 
+## Hey Everyone👋
+my name is Francesco i'm a Junior web developer and this is the second (ish) app that i made using JavaScript and PHP.
+
+## Record Micro-Management 2.0 😎🤓
+A realy small app that allow the user to Insert, Change, Search and Delete some standard record into a MongoDB database.
+This time the server endpoint information are stored in a .ENV file which is stored on the server where our app is running.
+The reason why the server information are in this file is just for learn how to handle this kind of information which are supposed to be hide from the users in a real retail businness app.
+
+## Motivation ❤️‍🔥
+This project was made only for didactic use, in order to make some practice with JavaScript and PHP.
+
+## Used Tools 🧰
+- [VScode](https://code.visualstudio.com/download)
+- [Laragon](https://laragon.org/)
+- [Bootstrap 5](https://getbootstrap.com/)
+- [PHPLIB for MongoDB](https://www.php.net/manual/en/mongodb.tutorial.library.php)
+- [MongoDB PHP Driver](https://www.php.net/manual/en/mongodb.installation.windows.php)
+- [MongoDB Compass](https://www.mongodb.com/try/download/compass)
+
+## Needed Setup ✔️
+in order to properly run the app we need to install Laragon and turn on the Apache and the MongoDB servers
+![ServerIMG](https://i.ibb.co/tPrCCwc/server.png)
+
+then we need to connect to the server
+![ConnectionIMG](https://i.ibb.co/6XkKq4p/connection.png)
+create the database and the collection: as you can see i've made the database with the name of "DatabaseDiProva" and the collection named "Anagrafica"
+![DatabaseIMG](https://i.ibb.co/qC9jTM5/database.png)
