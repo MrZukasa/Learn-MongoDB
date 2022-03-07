@@ -46,7 +46,11 @@ This project was made only for didactic use, in order to make some practice with
 in order to properly run the app we need to install Laragon and turn on the Apache and the MongoDB servers
 ![ServerIMG](https://i.ibb.co/tPrCCwc/server.png)
 
-then we need to connect to the server
+then we need to connect to the server via Compass
 ![ConnectionIMG](https://i.ibb.co/6XkKq4p/connection.png)
+
 create the database and the collection: as you can see i've made the database with the name of "DatabaseDiProva" and the collection named "Anagrafica"
 ![DatabaseIMG](https://i.ibb.co/qC9jTM5/database.png)
+
+you can name the database and the collection as you prefere, the only thing that you need to do if you don't wanna use the same name of mine is to remember to insert those data in the .ENV file
+![ENVIMG](https://i.ibb.co/gJRV6jv/env.png)
