@@ -1,6 +1,6 @@
-# Learn MongoDB
+# Learn MongoDB 📘📒
 
-Comandi Shell mongoDB
+## MongoDB shell commands 🐚
 - show dbs -> mostra tutti i db ed il peso, mostra solo db con dati all'interno
 - use nomedb -> crea un nuovo db
 - db.nomecollection -> crea una collezione aka tabella
@@ -19,7 +19,7 @@ Comandi Shell mongoDB
 - db.nomecollection.deleteMany({chiave: "valore"}) -> cancellare più record
 
 
-## Usefull Links
+## Usefull Links ✍️
 - https://docs.mongodb.com/php-library/current/tutorial/crud/
 - https://packagist.org/packages/vlucas/phpdotenv
 
@@ -55,5 +55,6 @@ create the database and the collection: as you can see i've made the database wi
 you can name the database and the collection as you prefer, the only thing that you need to do if you don't wanna use the same name of mine is to remember to insert those data in the .ENV file
 ![ENVIMG](https://i.ibb.co/gJRV6jv/env.png)
 
+# et Violà ✨
 then you can access to the app via browser at localhost address
 ![appIMG](https://i.ibb.co/tsrSM5S/app.png)
